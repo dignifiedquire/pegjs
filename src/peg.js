@@ -24,6 +24,9 @@ var PEG = {
    * generated parser and cause its malfunction.
    */
   buildParser: function(grammar, options) {
+    if (options.coffee) {
+      console.log("build Coffee", PEG.parserCoffee);
+    }
     return PEG.compiler.compile(PEG.parser.parse(grammar), options);
   }
 };
@@ -39,7 +42,9 @@ PEG.GrammarError.prototype = Error.prototype;
 
 // @include "utils.js"
 // @include "parser.js"
+// @include "parser_coffee.js"
 // @include "compiler.js"
+
 
 return PEG;
 

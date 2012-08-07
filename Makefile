@@ -15,6 +15,10 @@ DIST_NODE_DIR = $(DIST_DIR)/node
 PARSER_SRC_FILE = $(SRC_DIR)/parser.pegjs
 PARSER_OUT_FILE = $(SRC_DIR)/parser.js
 
+PARSER_COFFEE_SRC_FILE = $(SRC_DIR)/parser_coffee.pegjs
+PARSER_COFFEE_OUT_FILE = $(SRC_DIR)/parser_coffee.js
+
+
 PEGJS_SRC_FILE = $(SRC_DIR)/peg.js
 PEGJS_LIB_FILE = $(LIB_DIR)/peg.js
 
@@ -89,6 +93,7 @@ PREPROCESS=perl -e '                                                           \
 # Generate the grammar parser
 parser:
 	$(PEGJS) --export-var PEG.parser $(PARSER_SRC_FILE) $(PARSER_OUT_FILE)
+	$(PEGJS) --export-var PEG.parserCoffee $(PARSER_COFFEE_SRC_FILE) $(PARSER_COFFEE_OUT_FILE)
 
 # Build the PEG.js library
 build:
