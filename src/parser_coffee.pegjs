@@ -1,3 +1,7 @@
+{
+  var CoffeeScript = require('coffee-script');
+}
+
 grammar
   = __ initializer:initializer? rules:rule+ {
       console.log("COFFEE");
@@ -147,7 +151,14 @@ primary
 /* "Lexical" elements */
 
 action "action"
-  = braced:braced __ { return braced.substr(1, braced.length - 2); }
+  = braced:braced __ { 
+      /* return coffeescript */
+      var code = braced.substr(1, braced.length - 2);
+      var compiledCode = CoffeeScript.compile(code, {bare:true});
+      
+      console.log(compiledCode);
+      return compiledCode; 
+  }
 
 braced
   = "{" parts:(braced / nonBraceCharacters)* "}" {

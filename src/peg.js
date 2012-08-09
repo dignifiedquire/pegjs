@@ -24,10 +24,12 @@ var PEG = {
    * generated parser and cause its malfunction.
    */
   buildParser: function(grammar, options) {
-    if (options.coffee) {
+    var parser = PEG.parser;
+    if (options && options.coffee) {
       console.log("build Coffee", PEG.parserCoffee);
+      parser = PEG.parserCoffee;
     }
-    return PEG.compiler.compile(PEG.parser.parse(grammar), options);
+    return PEG.compiler.compile(parser.parse(grammar), options);
   }
 };
 

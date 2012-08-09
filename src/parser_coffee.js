@@ -800,7 +800,14 @@ PEG.parserCoffee = (function(){
           pos = r2;
         }
         if (r0 !== null) {
-          r0 = (function(offset, braced) { return braced.substr(1, braced.length - 2); })(r1, r3);
+          r0 = (function(offset, braced) { 
+              /* return coffeescript */
+              var code = braced.substr(1, braced.length - 2);
+              var compiledCode = CoffeeScript.compile(code, {bare:true});
+              
+              console.log(compiledCode);
+              return compiledCode; 
+          })(r1, r3);
         }
         if (r0 === null) {
           pos = r1;
@@ -2839,6 +2846,9 @@ PEG.parserCoffee = (function(){
         
         return { line: line, column: column };
       }
+      
+      
+        var CoffeeScript = require('coffee-script');
       
       
       var result = parseFunctions[startRule]();
