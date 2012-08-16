@@ -17,6 +17,18 @@ Getting Started
 
 [Online version](http://pegjs.majda.cz/online) is the easiest way to generate a parser. Just enter your grammar, try parsing few inputs, and download generated parser code.
 
+
+PEGCoffee
+---------
+You can now use CoffeeScript in your actions. Just pass the compiler the option `coffee = true`. For example
+
+    $ pegjs --coffee myAwesomeGrammar.pegcoffee
+
+or
+
+    var parser = PEG.buildParser("start = ('a' / 'b')+{ return "1+1 = #{1+1}"}", {coffee: true});    
+
+
 Installation
 ------------
 
